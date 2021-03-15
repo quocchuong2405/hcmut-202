@@ -38,44 +38,37 @@ protected:
   std::vector<std::string> studentNames; // Task 1 done
 
 public:
-  virtual void addStudent(std::string) = 0;
-  virtual void removeStudent(std::string) = 0;
-  virtual void exportStudent() = 0;
+  virtual void addStudent(std::string) = 0;    // Task 2 done
+  virtual void removeStudent(std::string) = 0; // Task 3 done
+  virtual void exportStudent() = 0;            // Task 4 done
 }; // end class IStudentMgmt
 
 class StudentMgmt : public IStudentMgmt
 {
 public:
-  void addStudent(std::string name) // Task 2 done
+  void addStudent(std::string name)
   {
     studentNames.push_back(name);
     return;
   }
 
-  void exportStudent() // Task 3 done
+  void exportStudent()
   {
     for (std::string name : studentNames)
       std::cout << name << std::endl;
     return;
   }
 
-  void removeStudent(std::string name) // Task 4 done
+  void removeStudent(std::string name)
   {
     if (studentNames.size() == 0)
       return;
 
-    bool e404 = true;
+    int initSize = studentNames.size();
 
-    for (std::vector<std::string>::iterator itr = studentNames.begin(); itr != studentNames.end(); itr++)
-    {
-      if (*itr == name)
-      {
-        studentNames.erase(std::remove(studentNames.begin(), studentNames.end(), name), studentNames.end());
-        e404 = false;
-      }
-    }
+    studentNames.erase(std::remove(studentNames.begin(), studentNames.end(), name), studentNames.end());
 
-    if (e404)
+    if (initSize == studentNames.size())
       std::cout << "Sorry, this dude does not exist." << std::endl;
     else
       std::cout << "Done." << std::endl;
