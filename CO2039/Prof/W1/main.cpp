@@ -45,7 +45,7 @@ int main(int, char **)
       break;
 
     default:
-      std::cout << "I'll see you in the afterlife.";
+      std::cout << "I'll see you in the afterlife." << std::endl;
       working = false;
       break;
     }
