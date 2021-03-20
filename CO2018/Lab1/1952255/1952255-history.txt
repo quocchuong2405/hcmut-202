@@ -1,0 +1,70 @@
+: 1616202438:0;~
+: 1616202475:0;whoami
+: 1616202651:0;/mnt/d/HCMUT/202/CO2018/Lab1
+: 1616202656:0;touch main.c
+: 1616202659:0;vsi
+: 1616202946:0;touch report.txt
+: 1616203631:0;touch hello.c
+: 1616203633:0;touch hello.h
+: 1616203916:0;l
+: 1616203921:0;make
+: 1616203928:0;l
+: 1616203952:0;make all
+: 1616203958:0;l
+: 1616203984:0;vsi ~/cpp_tmp
+: 1616204040:0;make clean
+: 1616204043:0;make all
+: 1616204074:0;make clean
+: 1616204076:0;make all
+: 1616204139:0;l
+: 1616204144:0;mkdir temp
+: 1616204155:0;cpv hello.c hello.h ./temp
+: 1616204158:0;l
+: 1616204164:0;make clean
+: 1616204165:0;l
+: 1616204172:0;l temp
+: 1616204197:0;make
+: 1616204201:0;l
+: 1616204207:0;make
+: 1616204216:0;make hello.o
+: 1616204249:0;make clean
+: 1616204251:0;make all
+: 1616204254:0;l
+: 1616204261:0;make clean
+: 1616204263:0;rm hello
+: 1616204265:0;l
+: 1616204273:0;make all
+: 1616204277:0;l
+: 1616204283:0;make clnea
+: 1616204285:0;make clean
+: 1616204287:0;exit
+: 1616204292:0;l
+: 1616204307:0;make
+: 1616204312:0;make all
+: 1616204325:0;make clean
+: 1616204340:0;cpv ./temp ../temp
+: 1616204346:0;explorer.exe ..
+: 1616204359:0;make
+: 1616204377:0;make clean
+: 1616204379:0;make
+: 1616204666:0;mkdir 1952255
+: 1616204697:0;vsi 1952255
+: 1616204709:0;touch example.txt
+: 1616204748:0;vim example.txt
+: 1616204839:0;exit
+: 1616205031:0;alias cl
+: 1616205038:0;function\
+exit
+: 1616205042:0;functions
+: 1616205052:0;alias l
+: 1616205081:0;ls -lAh
+: 1616205200:0;exit
+: 1616205210:0;head -5 example.txt
+: 1616205307:0;/mnt/d/HCMUT/202/CO2018/Lab1
+: 1616205310:0;l
+: 1616205319:0;alias l
+: 1616205346:0;tail -5 example.txt
+: 1616205378:0;cat 1952255/example.txt
+: 1616205382:0;exit
+: 1616205626:0;tree
+: 1616205672:0;cpv ~/.zsh_history /mnt/d/HCMUT/202/CO2018/Lab1/1952255/1952255-history.txt

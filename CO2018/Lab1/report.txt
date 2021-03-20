@@ -1,0 +1,23 @@
+3.1:
+1 By splitting an entire program into modules, we can visualize the workflow of a project, compile individual segments of the program, thus makes it easier to debug.
+  With the program modularized, we need not recompile everything each time a source file is changed, but only binaries that depends on it.
+
+  For example, using the provided helloworld, I move hello.c and hello.h to a subdirectory. When I run make again, it only recompile hello.o, not main.o
+
+2 By having Makefile in the top level directory, we can reference each source code files using Linux relative path
+
+  main.o: main.c ./you_would_not_believe_your_eyes/hello.h
+    gcc -c main.c
+
+3.2:
+1 mkdir 1952255 && cd 1952255
+2 touch example.txt
+3 ls -lAh
+4 cat example.txt
+5 head -5 example.txt
+6 tail -5 example.txt
+7 cpv .zsh_history 1952255-history.txt
+  { I use zsh and alias cpv='rsync -ah --info=progress2' }
+  { Why bother with history >> 1952255-history.txt }
+
+3.3: Oh no
