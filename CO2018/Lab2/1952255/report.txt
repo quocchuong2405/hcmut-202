@@ -1,0 +1,6 @@
+1 Output at LINE A is the process id of the process.
+  It is usual for this value to change as there is no mechanism that can reserve an id for some process.
+
+2 The output at LINE C should be 15 as children process are only shared a copy of the data in the memory, not the actual data.
+
+3 As the parent no longer needs to wait for the child, the parent just do what it needs to do, thus LINE C is returned before LINE A.
