@@ -27,7 +27,6 @@ int main(int argc, char **argv)
     else if (pidB == 0)
     {
       printf("%d: B\n", getpid());
-      waitpid(pidD, NULL, 0);
 
       pidE = fork();
       if (pidE < 0)
@@ -38,12 +37,11 @@ int main(int argc, char **argv)
       else if (pidE == 0)
       {
         printf("%d: E\n", getpid());
-        waitpid(pidG, NULL, 0);
 
         pidI = fork();
         if (pidI < 0)
         {
-          perror("E");
+          perror("I");
           exit(1);
         }
         else if (pidI == 0)
@@ -78,13 +76,12 @@ int main(int argc, char **argv)
       pidC = fork();
       if (pidC < 0)
       {
-        perror("B");
+        perror("C");
         exit(1);
       }
       else if (pidC == 0)
       {
         printf("%d: C\n", getpid());
-        waitpid(pidF, NULL, 0); // !
 
         pidG = fork();
         if (pidG < 0)
@@ -106,7 +103,7 @@ int main(int argc, char **argv)
         pidD = fork();
         if (pidD < 0)
         {
-          perror("B");
+          perror("D");
           exit(1);
         }
         else if (pidD == 0)
