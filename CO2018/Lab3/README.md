@@ -35,8 +35,3 @@ Hence we just need to join each thread after it's been executed.
   pthread_create(&tid[i], NULL, hello, (void *)&i);
   pthread_join(tid[i], NULL);
 ```
-
-This requirement completely rejects the idea of multi-threading.
-Also there are a lot of implicit pointer conversions.
-
-This problem is no more than a brain teaser.
