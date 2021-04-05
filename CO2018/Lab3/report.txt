@@ -1,0 +1,7 @@
+1 Every time a thread is initialized, it acquires an ID, a program counter, a register set and a stack
+  When a program starts, it acquires everything a thread needs plus the code and the data.
+
+  A program needs to load everything from external memory for every instance, a thread only needs to copy the codebase already available in the memory.
+
+2 It is possible to have concurrency but not parallelism.
+  For instance, when we have more work threads than CPU threads and run-time timeout is less than required time to complete a thread. If for some reason threads don't start at the same time or they are not multiples of timeout, parallelism is not guaranteed.
