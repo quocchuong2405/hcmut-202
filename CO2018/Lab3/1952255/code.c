@@ -4,6 +4,7 @@
 void *hello(void *tid)
 {
   printf("Hello from thread %d\n", *(int *)tid);
+  return NULL;
 }
 
 int main()
@@ -16,4 +17,6 @@ int main()
     pthread_join(tid[i], NULL);
   }
   pthread_exit(NULL);
+
+  return 0;
 }
