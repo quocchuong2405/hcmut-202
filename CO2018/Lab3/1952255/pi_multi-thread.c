@@ -11,7 +11,7 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 void *runner(void *param)
 {
   // * random() considerably slows this down
-  // * See man 3 rand, man 3 random
+  // * See rand(3), random(3)
   unsigned int rand_state = rand();
   unsigned int inThread = 0;
 
