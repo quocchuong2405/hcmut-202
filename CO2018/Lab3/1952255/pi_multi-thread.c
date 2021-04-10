@@ -10,9 +10,10 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void *runner(void *param)
 {
-  // * random() considerably slows this down
+  // * random() is a potential CPU hog
+  // * Use rand_r() with random state to mitigate overhead from random()
   // * See rand(3), random(3)
-  unsigned int rand_state = rand();
+  unsigned int rand_state = random() - RAND_MAX / 2 - 1;
   unsigned int inThread = 0;
 
   for (unsigned int i = 0; i++ < perThread;)
@@ -20,7 +21,7 @@ void *runner(void *param)
     double x = 1.0 * rand_r(&rand_state) / RAND_MAX;
     double y = 1.0 * rand_r(&rand_state) / RAND_MAX;
 
-    if (x * x + y * y <= 1)
+    if (x * x + y * y <= 1.0 * 1.0)
       inThread += 1;
   }
 
