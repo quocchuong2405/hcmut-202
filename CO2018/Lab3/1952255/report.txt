@@ -1,5 +1,5 @@
-1 Every time a thread is initialized, it acquires an ID, a program counter, a register set and a stack
-  When a program starts, it acquires everything a thread needs plus the code and the data.
+1 Every time a thread is initialized, it acquires a process ID, a program counter, a register set and a memory stack
+  When a program starts, it acquires everything a thread needs plus the code and the data, thus an overhead is needed to load the program into memory.
 
   A program needs to load everything from external memory for every instance, a thread only needs to copy the codebase already available in the memory.
 
