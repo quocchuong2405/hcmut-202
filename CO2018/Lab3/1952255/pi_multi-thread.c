@@ -4,13 +4,14 @@
 
 #include <time.h>
 
-// *This is bad practice
+// ! This is bad practice
 unsigned int inCircle = 0, total = 0, perThread = 0, numThreads = 2;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void *runner(void *param)
 {
   // * random() considerably slows this down
+  // * See man 3 rand, man 3 random
   unsigned int rand_state = rand();
   unsigned int inThread = 0;
 
@@ -52,7 +53,8 @@ int main(int argc, char **argv)
   pthread_attr_t attr;
   pthread_attr_init(&attr);
 
-  perThread = 1 + total / numThreads; // * Not guaranteed
+  // * Guarantee that the actual number of sample points is at lease equal to the required number of samples
+  perThread = 1 + total / numThreads;
 
   for (unsigned int i = 0; i < numThreads; i++)
     if (pthread_create(&pid[i], &attr, runner, NULL) != 0)
@@ -64,7 +66,7 @@ int main(int argc, char **argv)
   double result = 4.0 * inCircle / total;
 
   clock_t end = clock();
-  double elapsed = 1.0 * (end - start) / CLOCKS_PER_SEC / numThreads;
+  double elapsed = 1.0 * (end - start) / CLOCKS_PER_SEC;
 
   printf("Pi = %lf\n", result);
   printf("Time taken = %lf seconds\n", elapsed);
