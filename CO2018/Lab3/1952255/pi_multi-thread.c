@@ -20,7 +20,7 @@ void *runner(void *param)
     double y = 1.0 * rand_r(&rand_state) / RAND_MAX;
 
     if (x * x + y * y <= 1)
-      inCircle += 1;
+      inThread += 1;
   }
 
   // * Mutex lock

@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <pthread.h>
 
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-
 void *hello(void *tid)
 {
   printf("Hello from thread %d\n", *(int *)tid);
