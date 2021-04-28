@@ -48,7 +48,7 @@
  * Go further creating a JSON document that represents the whole service history of a vehicle.
  *
  * You are not expected to try parsing a JSON document you have created at this stage.
-*/
+ */
 
 #ifndef CAR_RENTAL_HPP
 #define CAR_RENTAL_HPP
@@ -56,6 +56,31 @@
 #include <string>
 #include <vector>
 #include <iostream>
+
+#pragma region Service History
+class ServiceHistory
+{
+protected:
+  struct ServiceData
+  {
+    std::string type;
+    int date;
+    int mileage;
+
+    ServiceData(std::string type, int date, int mileage) : type(type), date(date), mileage(mileage) {}
+    int operator-(const ServiceData &object) { return mileage - object.mileage; }
+  }; // end struct ServiceData
+  std::vector<ServiceData *> log;
+
+public:
+  void add(std::string type, int date, int mileage)
+  {
+    log.push_back(new ServiceData(type, date, mileage));
+  }
+  int isEmpty() { return log.size() == 0; }
+  ServiceData *latest() { return log.back(); }
+}; // end class ServiceHistory
+#pragma endregion
 
 #pragma region Vehicles
 class IVehicle
@@ -81,8 +106,10 @@ protected:
       plate,        // * License plate
       drivetrain;   // * 2x2, 4x4, 2x6, 4x6, 6x6...
   bool available = true;
+  ServiceHistory *servicing;
 
 public:
+  Vehicle() {}
   Vehicle(int weight, int seats, int cargo_space, int year, std::string type, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4") : weight(weight), seats(seats), cargo_space(cargo_space), year(year), type(type), brand(brand), model(model), plate(plate), drivetrain(drivetrain) {}
 
 public:
@@ -98,44 +125,189 @@ public:
   bool isAvailable() const { return available; }
   void setWeight(int value) { weight = value; }
   void setSeat(int value) { seats = value; }
+  void addMileage(int value) { mileage += value; }
   void setType(std::string value) { type = value; }
   void setAvailability(bool value) { available = value; }
 
 public:
-  virtual void serviceEngine();
-  virtual void serviceTransmission();
-  virtual void serviceTires();
+  virtual void serviceEngine() = 0;
+  virtual void serviceTransmission() = 0;
+  virtual void serviceTires() = 0;
 }; // end class Vehicle
 
 class Sedan : public Vehicle
 {
 public:
-  Sedan(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4") : Vehicle{weight, seats, cargo_vroom, year, "Sedan", brand, model, plate, drivetrain} {}
+  Sedan(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4")
+  {
+    this->weight = weight;
+    this->seats = seats;
+    this->cargo_space = cargo_vroom;
+    this->year = year;
+    this->type = "Sedan";
+    this->brand = brand;
+    this->model = model;
+    this->plate = plate;
+    this->drivetrain = drivetrain;
+  }
+  void serviceEngine()
+  {
+    if ((servicing->isEmpty() && mileage >= 8000) || (mileage - servicing->latest()->mileage >= 8000))
+      servicing->add("Engine", -1, mileage);
+    return;
+  }
+  void serviceTransmission()
+  {
+    if ((servicing->isEmpty() && mileage >= 30000) || (mileage - servicing->latest()->mileage >= 30000))
+      servicing->add("Transmission", -1, mileage);
+    return;
+  }
+  void serviceTires()
+  {
+    if ((servicing->isEmpty() && mileage >= 12000) || (mileage - servicing->latest()->mileage >= 12000))
+      servicing->add("Tires", -1, mileage);
+    return;
+  }
 }; // end class Sedan
 
 class SUV : public Vehicle
 {
 public:
-  SUV(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4") : Vehicle{weight, seats, cargo_vroom, year, "SUV", brand, model, plate, drivetrain} {}
+  SUV(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4")
+  {
+    this->weight = weight;
+    this->seats = seats;
+    this->cargo_space = cargo_vroom;
+    this->year = year;
+    this->type = "SUV";
+    this->brand = brand;
+    this->model = model;
+    this->plate = plate;
+    this->drivetrain = drivetrain;
+  }
+  void serviceEngine()
+  {
+    if ((servicing->isEmpty() && mileage >= 8000) || (mileage - servicing->latest()->mileage >= 8000))
+      servicing->add("Engine", -1, mileage);
+    return;
+  }
+  void serviceTransmission()
+  {
+    if ((servicing->isEmpty() && mileage >= 30000) || (mileage - servicing->latest()->mileage >= 30000))
+      servicing->add("Transmission", -1, mileage);
+    return;
+  }
+  void serviceTires()
+  {
+    if ((servicing->isEmpty() && mileage >= 12000) || (mileage - servicing->latest()->mileage >= 12000))
+      servicing->add("Tires", -1, mileage);
+    return;
+  }
 }; // end class SUV
 
 class Coupe : public Vehicle
 {
 public:
-  Coupe(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4") : Vehicle{weight, seats, cargo_vroom, year, "Coupe", brand, model, plate, drivetrain} {}
+  Coupe(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4")
+  {
+    this->weight = weight;
+    this->seats = seats;
+    this->cargo_space = cargo_vroom;
+    this->year = year;
+    this->type = "Coupe";
+    this->brand = brand;
+    this->model = model;
+    this->plate = plate;
+    this->drivetrain = drivetrain;
+  }
+  void serviceEngine()
+  {
+    if ((servicing->isEmpty() && mileage >= 8000) || (mileage - servicing->latest()->mileage >= 8000))
+      servicing->add("Engine", -1, mileage);
+    return;
+  }
+  void serviceTransmission()
+  {
+    if ((servicing->isEmpty() && mileage >= 30000) || (mileage - servicing->latest()->mileage >= 30000))
+      servicing->add("Transmission", -1, mileage);
+    return;
+  }
+  void serviceTires()
+  {
+    if ((servicing->isEmpty() && mileage >= 12000) || (mileage - servicing->latest()->mileage >= 12000))
+      servicing->add("Tires", -1, mileage);
+    return;
+  }
 }; // end class Coupe
 
 class Van : public Vehicle
 {
 public:
-  Van(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4") : Vehicle{weight, seats, cargo_vroom, year, "Van", brand, model, plate, drivetrain} {}
+  Van(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4")
+  {
+    this->weight = weight;
+    this->seats = seats;
+    this->cargo_space = cargo_vroom;
+    this->year = year;
+    this->type = "Van";
+    this->brand = brand;
+    this->model = model;
+    this->plate = plate;
+    this->drivetrain = drivetrain;
+  }
+  void serviceEngine()
+  {
+    if ((servicing->isEmpty() && mileage >= 8000) || (mileage - servicing->latest()->mileage >= 8000))
+      servicing->add("Engine", -1, mileage);
+    return;
+  }
+  void serviceTransmission()
+  {
+    if ((servicing->isEmpty() && mileage >= 30000) || (mileage - servicing->latest()->mileage >= 30000))
+      servicing->add("Transmission", -1, mileage);
+    return;
+  }
+  void serviceTires()
+  {
+    if ((servicing->isEmpty() && mileage >= 12000) || (mileage - servicing->latest()->mileage >= 12000))
+      servicing->add("Tires", -1, mileage);
+    return;
+  }
 }; // end class Van
 
 class Truck : public Vehicle
 {
 public:
-  Truck(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4") : Vehicle{weight, seats, cargo_vroom, year, "Truck", brand, model, plate, drivetrain} {}
-
+  Truck(int weight, int seats, int cargo_vroom, int year, std::string brand, std::string model, std::string plate, std::string drivetrain = "2x4")
+  {
+    this->weight = weight;
+    this->seats = seats;
+    this->cargo_space = cargo_vroom;
+    this->year = year;
+    this->type = "Truck";
+    this->brand = brand;
+    this->model = model;
+    this->plate = plate;
+    this->drivetrain = drivetrain;
+  }
+  void serviceEngine()
+  {
+    if ((servicing->isEmpty() && mileage >= 8000) || (mileage - servicing->latest()->mileage >= 8000))
+      servicing->add("Engine", -1, mileage);
+    return;
+  }
+  void serviceTransmission()
+  {
+    if ((servicing->isEmpty() && mileage >= 30000) || (mileage - servicing->latest()->mileage >= 30000))
+      servicing->add("Transmission", -1, mileage);
+    return;
+  }
+  void serviceTires()
+  {
+    if ((servicing->isEmpty() && mileage >= 12000) || (mileage - servicing->latest()->mileage >= 12000))
+      servicing->add("Tires", -1, mileage);
+    return;
+  }
 }; // end class Truck
 #pragma endregion
 
