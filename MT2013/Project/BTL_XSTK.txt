@@ -1,0 +1,28 @@
+- Confirm deadline là 19/5 (mình sẽ hoàn thành vào 16/5 là chủ nhật)
+- Tinh thần là report nộp hard copy, cụ thể thầy sẽ đăng eL sau. Mình sẽ làm report trên latex.
+- TẤT CẢ MỌI NGƯỜI PHẢI HIỂU 2 PROJECT MÌNH ĐANG LÀM GÌ TRONG ĐÓ.
+	+ Tới hồi chấm thầy sẽ pick random 1 đứa để hỏi random 2-3 câu về cách giải mấy bài của nhóm để lấy điểm nhóm. 
+	Hỏi hơn 2-3 câu nghĩa là không hiểu mới phải hỏi thêm, nghĩa là điểm siêu thấp.
+
+	+ Trọng số của mấy câu hỏi tại lớp này lớn hơn cả cái report nên mọi người lưu ý.
+	+ Có một option là t có thể báo cho thầy trước là ai không nghiêm túc trong nhóm để thầy đừng hỏi,
+	  thì điểm nhóm còn lại sẽ không bị ảnh hưởng.
+
+- Một số câu hỏi mẫu (thầy confirm nha):
+	+ Why do you use that method? (hỏi về ý nghĩa)
+	+ What is that method? (hỏi về định nghĩa)
+	+ How do you do that? (hỏi về implementation)
+
+- Những gì cần lưu ý:
+	+ F distribution stands for Fisher distribution.
+	+ f-value > 0, always.
+	+ The theory part of the report: no need to have a separate section, only use keyword -> what we do -> what we get -> result.
+	+ Số đếm là dùng χ2, giá trị đo là dùng ANOVA.
+
+- Hướng đi project I:
+	+ Bài 1 dùng One-way ANOVA
+	+ Bài 2 dùng χ2 (Chi-squared)
+	+ Bài 3 dùng Two-way ANOVA (RCBD)
+	+ Bài 4 dùng χ2 (Chi-squared)
+
+- Link for details: https://hackmd.io/@mwuz3GfmSjWsTmR1VNO3Xg/BJETGC4uO
