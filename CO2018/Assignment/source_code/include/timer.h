@@ -6,12 +6,12 @@
 
 struct timer_id_t
 {
-	int done;
-	int fsh;
-	pthread_cond_t event_cond;
-	pthread_mutex_t event_lock;
-	pthread_cond_t timer_cond;
-	pthread_mutex_t timer_lock;
+  int done;
+  int fsh;
+  pthread_cond_t event_cond;
+  pthread_mutex_t event_lock;
+  pthread_cond_t timer_cond;
+  pthread_mutex_t timer_lock;
 };
 
 void start_timer();
