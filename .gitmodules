@@ -4,3 +4,6 @@
 [submodule "MT2013/Project/MT2013-ASG"]
 	path = MT2013/Project/MT2013-ASG
 	url = git@github.com:Smithienious/MT2013-ASG.git
+[submodule "CO2039/Lab"]
+	path = CO2039/Lab
+	url = https://github.com/Smithienious/CO2039-Lab.git
