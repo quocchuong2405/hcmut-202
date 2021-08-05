@@ -1,0 +1,21 @@
+# Generic document files
+*.doc
+*.docx
+
+# Generic table data files
+*.csv
+*.xls
+*.xlsx
+
+# Generic presentation files
+*.pdf
+*.ppt
+*.pptx
+
+# Generic image files
+*.png
+*.jpg
+*.jpeg
+
+# Generic compressed files
+*.zip
