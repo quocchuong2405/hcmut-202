@@ -2,7 +2,7 @@
 *.doc
 *.docx
 
-# Generic table data files
+# Generic data files
 *.csv
 *.xls
 *.xlsx
@@ -18,4 +18,9 @@
 *.jpeg
 
 # Generic compressed files
+*.rar
 *.zip
+
+# Generic shortcut files
+*.url
+*.lnk

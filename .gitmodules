@@ -1,9 +1,9 @@
 [submodule "CO2018/Assignment/CO2018-ASG"]
 	path = CO2018/Assignment/CO2018-ASG
-	url = git@github.com:Smithienious/CO2018-ASG.git
+	url = https://github.com/Smithienious/CO2018-ASG.git
 [submodule "MT2013/Project/MT2013-ASG"]
 	path = MT2013/Project/MT2013-ASG
-	url = git@github.com:Smithienious/MT2013-ASG.git
+	url = https://github.com/Smithienious/MT2013-ASG.git
 [submodule "CO2039/Final"]
 	path = CO2039/Final
-	url = git@github.com:Smithienious/CO2039-Final.git
+	url = https://github.com/Smithienious/CO2039-Final.git
